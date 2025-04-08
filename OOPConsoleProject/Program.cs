@@ -1,6 +1,8 @@
-﻿namespace OOPConsoleProject
+﻿using OOPConsoleProject.Player;
+
+namespace OOPConsoleProject
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {

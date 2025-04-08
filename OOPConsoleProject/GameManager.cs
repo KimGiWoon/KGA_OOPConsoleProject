@@ -13,8 +13,9 @@ namespace OOPConsoleProject
         private static Dictionary<SceneType, BaseScene> sceneList;
         private static BaseScene curScene;
 
-        private static PlayerBuider player;
-        public static PlayerBuider Player { get { return player; } }
+        // TODO : 클래스 세팅 미구현
+        //private static PlayerBuider player;
+        //public static PlayerBuider Player { get { return player; } }
 
         private static bool gameOver;
         
@@ -30,7 +31,7 @@ namespace OOPConsoleProject
                 Console.WriteLine();
                 curScene.Update();
                 Console.WriteLine();
-                curScene.Resuit();
+                curScene.Result();
             }
 
             GameEnd();
@@ -40,7 +41,8 @@ namespace OOPConsoleProject
         {
             Console.CursorVisible = false;  // 커서 세팅
             gameOver = false;   // 게임 설정
-            player = new PlayerBuider();    // 플레이어 설정
+            // TODO : 클래스 세팅 미구현
+            // player = new PlayerBuider();     //플레이어 설정
 
             sceneList = new Dictionary<SceneType, BaseScene>();
             sceneList.Add(SceneType.Title, new TitleScene());

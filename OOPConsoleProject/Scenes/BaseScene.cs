@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OOPConsoleProject.Player;
 
 namespace OOPConsoleProject.Scenes
 {
@@ -13,13 +14,13 @@ namespace OOPConsoleProject.Scenes
 
     public abstract class BaseScene
     {
-        
+
         public ConsoleKey keyDown;
 
         public abstract void Render();  // Situation
         public abstract void Input();   // Input
         public abstract void Update();  // Update
-        public abstract void Resuit();  // Result
+        public abstract void Result();  // Result
 
         public virtual void Enter() { } // Enter Interaction
         public virtual void Exit() { }  // Exit Interaction

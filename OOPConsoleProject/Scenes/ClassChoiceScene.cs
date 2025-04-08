@@ -7,52 +7,42 @@ using OOPConsoleProject.Player;
 
 namespace OOPConsoleProject.Scenes
 {
-    public class TitleScene : BaseScene
+    public class ClassChoiceScene : BaseScene
     {
-        PlayerBuider adventurer;
-        PlayerBuider warrior;
-        PlayerBuider wizard;
-        PlayerBuider archer;
-        PlayerBuider thief;
-
         public override void Render()
         {
             Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
             Console.WriteLine("┃                               ┃");
-            Console.WriteLine("┃    < 나의 끝내주는 모험! >    ┃");
+            Console.WriteLine("┃   * 직업을 선택해주세요. *    ┃");
             Console.WriteLine("┃                               ┃");
-            Console.WriteLine("┃                               ┃");
-            Console.WriteLine("┃      1. 게임 시작             ┃");
-            Console.WriteLine("┃      2. 게임 종료             ┃");
+            Console.WriteLine("┃      1. 모험가                ┃");
+            Console.WriteLine("┃      2. 전사                  ┃");
+            Console.WriteLine("┃      3. 마법사                ┃");
+            Console.WriteLine("┃      4. 궁수                  ┃");
+            Console.WriteLine("┃      5. 도적                  ┃");
             Console.WriteLine("┃                               ┃");
             Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-
         }
-
         public override void Input()
         {
             keyDown = Console.ReadKey(true).Key;
         }
-
         public override void Update()
         {
-            
+
         }
         public override void Result()
         {
             switch(keyDown)
             {
                 case ConsoleKey.D1:
-                    GameManager.SceneChange(SceneType.ClassChoice);
+                    Console.WriteLine("모험가를 선택하셨습니다.");
                     break;
-                case ConsoleKey.D2:
-                    Console.Clear();
-                    Console.WriteLine("게임을 종료합니다.");
-                    GameManager.GameEnd();
-                    break;
+                    
+                    
+                    
             }
         }
 
-        
     }
 }
