@@ -6,30 +6,36 @@ using System.Threading.Tasks;
 
 namespace OOPConsoleProject.Scenes
 {
-    public class MyRoomScene : BaseScene
+    public class MyRoomScene : MapScene
     {
-        public override void Render()
+        public MyRoomScene()
         {
-            throw new NotImplementedException();
+
+            mapData = new string[]
+            {
+                "############",
+                "#          #",
+                "#          #",
+                "#          #",
+                "#          #",
+                "#          #",
+                "#          #",
+                "############",
+            };
+
+            map = new bool[8, 12];
+            for(int y= 0; y<map.GetLength(0); y++)
+            {
+                for(int x= 0; x<map.GetLength(1); x++)
+                {
+                    map[y, x] = mapData[y][x] == '#' ? false : true;
+                }
+            }
+            //GameManager.Player.position = new Vecter2(1, 1);
+            //GameManager.Player.map = map;
         }
-
-        public override void Input()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Update()
-        {
-            throw new NotImplementedException();
-
-        }
-
-        public override void Result()
-        {
-            throw new NotImplementedException();
-        }
-
         
-        
+
+
     }
 }

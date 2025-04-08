@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OOPConsoleProject.Player;
+
 
 namespace OOPConsoleProject.Scenes
 {
     public class ClassChoiceScene : BaseScene
     {
+        //PlayerBuider adventurerBuilder = new PlayerBuider();
+        //PlayerBuider warriorBuilder = new PlayerBuider();
+        //PlayerBuider wizardBuilder = new PlayerBuider();
+        //PlayerBuider archerBuilder = new PlayerBuider();
+        //PlayerBuider thiefBuilder = new PlayerBuider();
+
+        private static Player player;
+        public static Player Player { get { return player; } }
+
         public override void Render()
         {
             Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
@@ -36,9 +45,22 @@ namespace OOPConsoleProject.Scenes
             switch(keyDown)
             {
                 case ConsoleKey.D1:
-                    Console.WriteLine("모험가를 선택하셨습니다.");
+                    Console.Clear();
+                    Utility.TextPrint("모험가를 선택하셨습니다.");
+                    Utility.TextPrint("신의 가호가 함께하길....");
+                    Utility.PressAnyKey("");
+                    //adventurerBuilder.SetClass("모험가")
+                    //                 .SetHp(100)
+                    //                 .SetStr(5)
+                    //                 .SetDex(2)
+                    //                 .SetInt(1)
+                    //                 .SetLuck(2);
+                    //Player player = adventurerBuilder.Build();
+                    GameManager.SceneChange(SceneType.MyRoom);
                     break;
+
                     
+
                     
                     
             }

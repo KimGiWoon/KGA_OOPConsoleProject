@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OOPConsoleProject.Player;
 
 namespace OOPConsoleProject.Scenes
 {
@@ -14,7 +13,7 @@ namespace OOPConsoleProject.Scenes
 
     public abstract class BaseScene
     {
-
+        public string mapName;     // Map Name;
         public ConsoleKey keyDown;
 
         public abstract void Render();  // Situation

@@ -3,17 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OOPConsoleProject.Player;
 
 namespace OOPConsoleProject.Scenes
 {
     public class TitleScene : BaseScene
     {
-        PlayerBuider adventurer;
-        PlayerBuider warrior;
-        PlayerBuider wizard;
-        PlayerBuider archer;
-        PlayerBuider thief;
 
         public override void Render()
         {
@@ -43,7 +37,7 @@ namespace OOPConsoleProject.Scenes
             switch(keyDown)
             {
                 case ConsoleKey.D1:
-                    GameManager.SceneChange(SceneType.ClassChoice);
+                    GameManager.SceneChange(SceneType.Village);
                     break;
                 case ConsoleKey.D2:
                     Console.Clear();

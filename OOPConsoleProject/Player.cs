@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
-using OOPConsoleProject.Scenes;
 
-namespace OOPConsoleProject.Player
+namespace OOPConsoleProject
 {
     public class Player
     {
-        public Vector2 playerPosition;
-        
+        public Vecter2 position;
+        public bool[,] map;
 
+        // 플레이어 스탯 프로퍼티 생성
         private string playerClass; // Player Class
         public string PlayerClass { get { return playerClass; } set { playerClass = value; } }
         private int hp;     // Player HP
@@ -23,11 +22,65 @@ namespace OOPConsoleProject.Player
         public float Dex { get { return dex; } set { dex = value; } }
         private float _int; // Player Int
         public float Int { get { return _int; } set { _int = value; } }
-        private int luck;   // Player Luck
-        public int Luck { get { return luck; } set { luck = value; } }
+       
+
+        public Player()
+        {
+            PlayerClass = "모험가";
+            Hp = 100;
+            Str = 2;
+            Dex = 2;
+            Int = 1;        
+        }
+
+        public void Print()
+        {
+            Console.SetCursorPosition(position.x, position.y);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write('▼');
+            Console.ResetColor();
+        }       
+
+        public void Move(ConsoleKey keyDown)
+        {
+            Vecter2 MovePos = position;
+
+            switch (keyDown)
+            {
+                case ConsoleKey.UpArrow:
+                    MovePos.y--;
+                    break;
+                case ConsoleKey.DownArrow:
+                    MovePos.y++;
+                    break;
+                case ConsoleKey.LeftArrow:
+                    MovePos.x--;
+                    break;
+                case ConsoleKey.RightArrow:
+                    MovePos.x++;
+                    break;
+            }
+
+            if (map[MovePos.y, MovePos.x] == true)
+            {
+                position = MovePos;
+            }
+           
+
+        }
+        public void StatusPint()
+        {
+            Console.WriteLine("====Player Status====");
+            Console.WriteLine("  {0}",PlayerClass.ToString());
+            Console.WriteLine("체력 : {0}", Hp);
+            Console.WriteLine("  힘 : {0}", Str);
+            Console.WriteLine("지력 : {0}", Int);
+            Console.WriteLine("민첩 : {0}", Dex);    
+            Console.WriteLine("=====================");
+        }
 
     }
-    // TODO : 클래스 세팅 미구현
+    //TODO : 클래스 세팅 미구현
     //public class PlayerBuider
     //{
     //    public string PlayerClass;
@@ -93,3 +146,4 @@ namespace OOPConsoleProject.Player
     //    }
     //}
 }
+

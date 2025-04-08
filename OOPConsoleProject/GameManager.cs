@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OOPConsoleProject.Player;
 using OOPConsoleProject.Scenes;
 
 namespace OOPConsoleProject
@@ -12,6 +11,9 @@ namespace OOPConsoleProject
     {
         private static Dictionary<SceneType, BaseScene> sceneList;
         private static BaseScene curScene;
+
+        private static Player player;   // 플레이어 프로퍼티 생성
+        public static Player Player { get { return player; } }
 
         // TODO : 클래스 세팅 미구현
         //private static PlayerBuider player;
@@ -41,13 +43,18 @@ namespace OOPConsoleProject
         {
             Console.CursorVisible = false;  // 커서 세팅
             gameOver = false;   // 게임 설정
-            // TODO : 클래스 세팅 미구현
-            // player = new PlayerBuider();     //플레이어 설정
+            player = new Player();     //플레이어 설정
 
             sceneList = new Dictionary<SceneType, BaseScene>();
             sceneList.Add(SceneType.Title, new TitleScene());
+            sceneList.Add(SceneType.ClassChoice, new ClassChoiceScene());
+            sceneList.Add(SceneType.MyRoom, new MyRoomScene());
+            sceneList.Add(SceneType.Village, new VillageScene());
+            sceneList.Add(SceneType.Field, new FieldScene());
 
             curScene = sceneList[SceneType.Title];
+
+            
         }
 
         public static void SceneChange(SceneType scene)
