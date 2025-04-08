@@ -17,6 +17,16 @@ namespace OOPConsoleProject
             this.y = y;
         }
         
+        // 백터와 백터의 위치가 같다는 것을 정의
+        public static bool operator == (Vecter2 left, Vecter2 right)
+        {
+            return left.x == right.x && left.y == right.y;
+        }
+        // 백터와 백터의 위치가 같지 않다는 것을 정의
+        public static bool operator != (Vecter2 left, Vecter2 right)
+        {
+            return left.x != right.x && left.y != right.y;
+        }
        
         
     }
