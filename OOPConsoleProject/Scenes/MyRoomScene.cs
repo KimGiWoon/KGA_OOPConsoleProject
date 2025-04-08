@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOPConsoleProject.Scenes
 {
-    public class MyRoomScene : MapScene
+    public class MyRoomScene : FieldScene
     {
         public MyRoomScene()
         {

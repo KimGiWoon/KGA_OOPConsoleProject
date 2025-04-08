@@ -10,10 +10,10 @@ namespace OOPConsoleProject.Scenes
     {//타이틀,  직업선택  ,  방   ,  마을  , 상점, 필드 ,   던전 ,  보스방 ,  전투     
         Title, ClassChoice, MyRoom, Village, Shop, Field, Dungeon, BossRoom, Battle
     }
-
+    
     public abstract class BaseScene
     {
-        public string mapName;     // Map Name;
+        public SceneType mapName;     // Map Name;
         public ConsoleKey keyDown;
 
         public abstract void Render();  // Situation
@@ -23,8 +23,8 @@ namespace OOPConsoleProject.Scenes
 
         public virtual void Enter() { } // Enter Interaction
         public virtual void Exit() { }  // Exit Interaction
-        public virtual void Open() { }  // Open Interaction
-        public virtual void Close() { } // Close Interaction
+        //public virtual void Open() { }  // Open Interaction
+        //public virtual void Close() { } // Close Interaction
 
 
     }

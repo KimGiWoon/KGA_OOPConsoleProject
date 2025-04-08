@@ -1,22 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using OOPConsoleProject.GameObjects;
 
 namespace OOPConsoleProject.Scenes
 {
-    public class FieldScene : BaseScene
+    public class FieldScene : MapManager
     {
-        private bool[,] map;
-        private string[] mapData;
-        // Game Object List Create
-        private List<GameObject> gameObjects;
-
         public FieldScene()
         {
+            mapName = SceneType.Field;
+
             mapData = new string[]
             {
                 "ΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔΔ",
@@ -28,76 +25,31 @@ namespace OOPConsoleProject.Scenes
             };
 
             map = new bool[6, 19];
-            for(int y =0; y < map.GetLength(0); y++)
+            for (int y = 0; y < map.GetLength(0); y++)
             {
-                for(int x =0; x < map.GetLength(1); x++)
+                for (int x = 0; x < map.GetLength(1); x++)
                 {
-                    map[y, x] = mapData[y][x] == 'Δ' ? false : true; 
+                    map[y, x] = mapData[y][x] == 'Δ' ? false : true;
                 }
             }
-
-            GameManager.Player.position = new Vecter2(1, 1);
-            GameManager.Player.map = map;
 
             // 마을로 가는 Game Object 생성
             gameObjects = new List<GameObject>();
-            gameObjects.Add(new Location('П',new Vecter2(1,1), SceneType.Village));
+            gameObjects.Add(new Location('П', ConsoleColor.Red, new Vecter2(1, 1), SceneType.Village));
+            gameObjects.Add(new Location('П', ConsoleColor.Blue, new Vecter2(17, 1), SceneType.Dungeon));
         }
-        
-        public override void Render()
+
+        public override void Enter()
         {
-            MapCreate();
-            foreach(GameObject gameObj in gameObjects)
+            if(GameManager.beforeScene == SceneType.Village)    
             {
-                gameObj.Print();
+                GameManager.Player.position = new Vecter2(1, 1);    // 이전 씬이 마을이면 플레이어 위치 마을입구 세팅
             }
-            GameManager.Player.Print();
-
-            Console.SetCursorPosition(0, map.GetLength(0) + 1);
-            GameManager.Player.StatusPint();
-        }
-
-        public override void Input()
-        {
-            keyDown = Console.ReadKey(true).Key;
-        }
-
-        public override void Update()
-        {
-            GameManager.Player.Move(keyDown);
-        }
-
-        public override void Result()
-        {
-            foreach(GameObject gameObj in gameObjects)
+            else if(GameManager.beforeScene == SceneType.Dungeon)
             {
-                // 게임오브젝트 위치와 플레이어의 위치가 같으면 상호작용
-                if (GameManager.Player.position == gameObj.position) 
-                {
-                    gameObj.interact(GameManager.Player);
-                }
+                GameManager.Player.position = new Vecter2(17, 1);   // 이전 씬이 던전이면 플레이어 위치 던전입구 세팅
             }
+            GameManager.Player.map = map;
         }
-
-        private void MapCreate()
-        {
-            Console.SetCursorPosition(0, 0);
-            for(int y = 0; y < map.GetLength(0); y++)
-            {
-                for(int x = 0; x < map.GetLength(1); x++)
-                {
-                    if (map[y,x] == true)
-                    {
-                        Console.Write(' ');
-                    }
-                    else
-                    {
-                        Console.Write('Δ');
-                    }
-                }
-                Console.WriteLine();
-            }
-        }
-        
     }
 }

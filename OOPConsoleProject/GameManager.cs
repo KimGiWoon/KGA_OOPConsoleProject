@@ -11,6 +11,8 @@ namespace OOPConsoleProject
     {
         private static Dictionary<SceneType, BaseScene> sceneList;
         private static BaseScene curScene;
+  
+        public static SceneType beforeScene;   // 이전 씬 이름
 
         private static Player player;   // 플레이어 프로퍼티 생성
         public static Player Player { get { return player; } }
@@ -51,14 +53,16 @@ namespace OOPConsoleProject
             sceneList.Add(SceneType.MyRoom, new MyRoomScene());
             sceneList.Add(SceneType.Village, new VillageScene());
             sceneList.Add(SceneType.Field, new FieldScene());
+            sceneList.Add(SceneType.Dungeon, new DungeonScene());
 
             curScene = sceneList[SceneType.Title];
-
             
         }
 
         public static void SceneChange(SceneType scene)
         {
+            beforeScene = curScene.mapName; // 이전 맵 저장
+
             curScene.Exit();
             curScene = sceneList[scene];
             curScene.Enter();
@@ -66,7 +70,9 @@ namespace OOPConsoleProject
 
         public static void GameEnd()
         {
-
+            Console.Clear();
+            Console.WriteLine("게임종료 합니다.");
+            gameOver = true;
         }
 
     }

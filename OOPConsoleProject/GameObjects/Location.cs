@@ -11,7 +11,7 @@ namespace OOPConsoleProject.GameObjects
     {
         private SceneType scene;
 
-        public Location(char shape, Vecter2 position, SceneType scene) : base(ConsoleColor.Red, shape, position)
+        public Location(char shape, ConsoleColor color, Vecter2 position, SceneType scene) : base(color, shape, position)
         {
             this.scene = scene;
         }

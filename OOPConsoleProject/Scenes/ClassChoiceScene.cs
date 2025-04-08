@@ -56,7 +56,7 @@ namespace OOPConsoleProject.Scenes
                     //                 .SetInt(1)
                     //                 .SetLuck(2);
                     //Player player = adventurerBuilder.Build();
-                    GameManager.SceneChange(SceneType.MyRoom);
+                    //GameManager.SceneChange(SceneType.MyRoom);
                     break;
 
                     

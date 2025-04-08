@@ -8,6 +8,10 @@ namespace OOPConsoleProject.Scenes
 {
     public class TitleScene : BaseScene
     {
+        public TitleScene()
+        {
+            mapName = SceneType.Title;
+        }
 
         public override void Render()
         {

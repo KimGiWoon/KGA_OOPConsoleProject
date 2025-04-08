@@ -8,6 +8,10 @@ namespace OOPConsoleProject.Scenes
 {
     public class VillageScene : BaseScene
     {
+        public VillageScene()
+        {
+            mapName = SceneType.Village;
+        }
         public override void Render()
         {
             Utility.SlowTextPrint("이곳은 내가 태어난 마을이다.");

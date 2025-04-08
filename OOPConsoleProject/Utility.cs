@@ -15,7 +15,7 @@ namespace OOPConsoleProject
             Thread.Sleep(delay);
             Console.ResetColor();
         }
-        public static void SlowTextPrint(string text, ConsoleColor textColor = ConsoleColor.White, int delay = 50)
+        public static void SlowTextPrint(string text, ConsoleColor textColor = ConsoleColor.White, int delay = 30)
         {
             text.Split(" ");
             Console.ForegroundColor = textColor;
