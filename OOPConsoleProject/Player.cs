@@ -13,7 +13,7 @@ namespace OOPConsoleProject
         public Inventory Inventory { get { return inventory; } }
         public Vecter2 position;
         public bool[,] map;
-  
+
         // 플레이어 스탯 프로퍼티 생성
         private string playerClass; // Player Class
         public string PlayerClass { get { return playerClass; } set { playerClass = value; } }

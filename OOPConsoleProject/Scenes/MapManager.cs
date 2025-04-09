@@ -13,10 +13,10 @@ namespace OOPConsoleProject.Scenes
         protected bool[,] map;
         protected string[] mapData;
         // Game Object List Create
+
         protected List<GameObject> gameObjects;
+        protected List<GameObject> monsterGameObjects;
 
-
-         
         public override void Render()
         {
             MapCreate();

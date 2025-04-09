@@ -38,9 +38,6 @@ namespace OOPConsoleProject.Scenes
             gameObjects = new List<GameObject>();
             gameObjects.Add(new Location('П', ConsoleColor.DarkGreen, new Vecter2(5, 6), SceneType.Village));
 
-            // 아이템 생성
-            //gameObjects.Add(new Potion(new Vecter2(1, 4), 30));
-
             // Player First Position
             GameManager.Player.position = new Vecter2(2, 2);
         }

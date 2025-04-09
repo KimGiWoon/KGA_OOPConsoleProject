@@ -36,6 +36,8 @@ namespace OOPConsoleProject.Scenes
             // 필드로 가는 Game Object 생성
             gameObjects = new List<GameObject>();
             gameObjects.Add(new Location('П', ConsoleColor.Blue, new Vecter2(1, 1), SceneType.Field));
+
+            // 몬스터 생성
         }
 
         public override void Enter()

@@ -10,4 +10,5 @@ namespace OOPConsoleProject
     {
         public void Interact(Player player);
     }
+    
 }
