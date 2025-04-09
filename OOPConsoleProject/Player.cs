@@ -8,12 +8,15 @@ namespace OOPConsoleProject
 {
     public class Player
     {
+        public Inventory inventory;
         public Vecter2 position;
         public bool[,] map;
 
         // 플레이어 스탯 프로퍼티 생성
         private string playerClass; // Player Class
         public string PlayerClass { get { return playerClass; } set { playerClass = value; } }
+        private int maxHp;   // Player Max Hp
+        public int MaxHp { get { return maxHp; } }
         private int hp;     // Player HP
         public int Hp { get { return hp; } set { hp = value; } }
         private float str;  // Player Strhgth
@@ -22,12 +25,14 @@ namespace OOPConsoleProject
         public float Dex { get { return dex; } set { dex = value; } }
         private float _int; // Player Int
         public float Int { get { return _int; } set { _int = value; } }
-       
 
         public Player()
         {
+            inventory = new Inventory();
+
             PlayerClass = "모험가";
             Hp = 100;
+            maxHp = hp;
             Str = 2;
             Dex = 2;
             Int = 1;        
@@ -40,6 +45,15 @@ namespace OOPConsoleProject
             Console.Write('▼');
             Console.ResetColor();
         }       
+
+        public void HealLimit(int healAmount)
+        {
+            Hp += healAmount;
+            if (hp > maxHp)
+            {
+                Hp = maxHp;
+            }
+        }
 
         public void Move(ConsoleKey keyDown)
         {

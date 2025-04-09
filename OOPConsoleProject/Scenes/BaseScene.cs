@@ -23,8 +23,8 @@ namespace OOPConsoleProject.Scenes
 
         public virtual void Enter() { } // Enter Interaction
         public virtual void Exit() { }  // Exit Interaction
-        //public virtual void Open() { }  // Open Interaction
-        //public virtual void Close() { } // Close Interaction
+        public virtual void Open() { }  // Open Interaction
+        public virtual void Close() { } // Close Interaction
 
 
     }
