@@ -12,14 +12,17 @@ namespace OOPConsoleProject.Item
         private int healAmount;
         public int HealAmount { get { return healAmount; } set { healAmount = value; } }
 
-        public Potion(ConsoleColor color, char shape, Vecter2 position, int healAmount) : base(color, shape, position)
+        public Potion( Vecter2 position, int healAmount) : base('♥', position)
         {
             this.healAmount = healAmount;
+
+            itemName = "포션";
+            itemDescription = "플레이어의 체력을 조금 회복하게 해주는 빨간 물약";
         }
 
         public override void Use()
         {
-            GameManager.Player.HealLimit(HealAmount);
+            GameManager.Player.Heal(HealAmount);
         }
     }
 }

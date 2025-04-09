@@ -25,9 +25,12 @@ namespace OOPConsoleProject.Scenes
                 gameObj.Print();
             }
             GameManager.Player.Print();
-
+            // 플레이어 상태창 출력
             Console.SetCursorPosition(0, map.GetLength(0) + 1);
             GameManager.Player.StatusPint();
+            // 인벤토리창 출력
+            Console.SetCursorPosition(0, map.GetLength(0) + 9);
+            GameManager.Player.Inventory.ItemFindAll();
         }
 
         public override void Input()
@@ -47,7 +50,12 @@ namespace OOPConsoleProject.Scenes
                 // 게임오브젝트 위치와 플레이어의 위치가 같으면 상호작용
                 if (GameManager.Player.position == gameObj.position) 
                 {
-                    gameObj.interact(GameManager.Player);
+                    gameObj.Interact(GameManager.Player);
+                    if (gameObj.disposable == true)
+                    {
+                        gameObjects.Remove(gameObj);
+                    }
+                    break;
                 }
             }
         }

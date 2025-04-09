@@ -8,7 +8,8 @@ namespace OOPConsoleProject
 {
     public class Player
     {
-        public Inventory inventory;
+        private Inventory inventory;
+        public Inventory Inventory { get { return inventory; } }
         public Vecter2 position;
         public bool[,] map;
 
@@ -46,10 +47,10 @@ namespace OOPConsoleProject
             Console.ResetColor();
         }       
 
-        public void HealLimit(int healAmount)
+        public void Heal(int healAmount)
         {
             Hp += healAmount;
-            if (hp > maxHp)
+            if (hp > maxHp) // 힐링량 Limit Setting
             {
                 Hp = maxHp;
             }

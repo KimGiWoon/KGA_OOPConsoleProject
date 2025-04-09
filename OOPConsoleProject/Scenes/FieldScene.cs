@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using OOPConsoleProject.GameObjects;
+using OOPConsoleProject.Item;
 
 namespace OOPConsoleProject.Scenes
 {
@@ -37,6 +38,8 @@ namespace OOPConsoleProject.Scenes
             gameObjects = new List<GameObject>();
             gameObjects.Add(new Location('П', ConsoleColor.Red, new Vecter2(1, 1), SceneType.Village));
             gameObjects.Add(new Location('П', ConsoleColor.Blue, new Vecter2(17, 1), SceneType.Dungeon));
+            // 아이템 생성
+            gameObjects.Add(new Potion(new Vecter2(1, 4), 30));
         }
 
         public override void Enter()

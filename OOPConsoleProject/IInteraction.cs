@@ -8,6 +8,6 @@ namespace OOPConsoleProject
 {
     public interface IInteraction
     {
-        public void interact(Player player);
+        public void Interact(Player player);
     }
 }

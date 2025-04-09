@@ -11,16 +11,15 @@ namespace OOPConsoleProject
         public Vecter2 position;
         public char shape;
         public ConsoleColor color;
+        public bool disposable;
 
-        public GameObject(ConsoleColor color, char shape, Vecter2 position)
+        public GameObject(ConsoleColor color, char shape, Vecter2 position, bool disposable)
         {
             this.color = color;
             this.shape = shape;
             this.position = position;
+            this.disposable = disposable;
         }
-
-        public abstract void interact(Player player);
-       
 
         public void Print()
         {
@@ -30,6 +29,7 @@ namespace OOPConsoleProject
             Console.ResetColor();
         }
 
+        public abstract void Interact(Player player);
 
     }
 }

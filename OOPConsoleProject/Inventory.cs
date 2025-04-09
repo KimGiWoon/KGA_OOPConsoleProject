@@ -7,7 +7,7 @@ using OOPConsoleProject.GameObjects;
 
 namespace OOPConsoleProject
 {
-    public class Inventory : List<Items>
+    public class Inventory
     {
         private List<Items> items;
 
@@ -35,7 +35,23 @@ namespace OOPConsoleProject
         // 인벤토리 아이템 사용
         public void ItemUse(int index)
         {
-            this[index].Use();
+            items[index].Use();
+        }
+
+        // 인벤토리 아이템 전체 출력
+        public void ItemFindAll()
+        {
+            Console.WriteLine("===소유한 아이템====");
+            if(items.Count == 0)
+            {
+                Console.WriteLine("아이템이 없어요");
+            }
+            for(int i = 0; i < items.Count; i++)
+            {
+                Console.WriteLine("{0}. {1}",i+1, items[i].itemName);
+            }
+            Console.WriteLine("====================");
+                
         }
     }
 }
