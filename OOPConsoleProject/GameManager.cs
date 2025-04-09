@@ -11,16 +11,11 @@ namespace OOPConsoleProject
     {
         private static Dictionary<SceneType, BaseScene> sceneList;
         private static BaseScene curScene;
-  
         public static SceneType beforeScene;   // 이전 씬 이름
 
         private static Player player;   // 플레이어 프로퍼티 생성
         public static Player Player { get { return player; } }
-
-        // TODO : 클래스 세팅 미구현
-        //private static PlayerBuider player;
-        //public static PlayerBuider Player { get { return player; } }
-
+       
         private static bool gameOver;
         
         public static void GameRun()
@@ -54,6 +49,8 @@ namespace OOPConsoleProject
             sceneList.Add(SceneType.Village, new VillageScene());
             sceneList.Add(SceneType.Field, new FieldScene());
             sceneList.Add(SceneType.Dungeon, new DungeonScene());
+            sceneList.Add(SceneType.RoomDialog, new RoomDialog());
+            sceneList.Add(SceneType.villageDialog, new VillageDialog());
 
             curScene = sceneList[SceneType.Title];
             

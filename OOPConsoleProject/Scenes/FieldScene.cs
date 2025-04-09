@@ -46,11 +46,11 @@ namespace OOPConsoleProject.Scenes
         {
             if(GameManager.beforeScene == SceneType.Village)    
             {
-                GameManager.Player.position = new Vecter2(1, 1);    // 이전 씬이 마을이면 플레이어 위치 마을입구 세팅
+                GameManager.Player.position = new Vecter2(1, 1);    // 이전 씬에 맞게 플레이어 위치 세팅
             }
             else if(GameManager.beforeScene == SceneType.Dungeon)
             {
-                GameManager.Player.position = new Vecter2(17, 1);   // 이전 씬이 던전이면 플레이어 위치 던전입구 세팅
+                GameManager.Player.position = new Vecter2(17, 1);   // 이전 씬에 맞게 플레이어 위치 세팅
             }
             GameManager.Player.map = map;
         }

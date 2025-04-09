@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace OOPConsoleProject
 {
+    
     public class Player
     {
         private Inventory inventory;    // Player Inventory
         public Inventory Inventory { get { return inventory; } }
         public Vecter2 position;
         public bool[,] map;
-
+  
         // 플레이어 스탯 프로퍼티 생성
         private string playerClass; // Player Class
         public string PlayerClass { get { return playerClass; } set { playerClass = value; } }
@@ -36,7 +37,7 @@ namespace OOPConsoleProject
             maxHp = hp;
             Str = 2;
             Dex = 2;
-            Int = 1;        
+            Int = 1;
         }
 
         public void Print()
@@ -99,18 +100,18 @@ namespace OOPConsoleProject
         }
         public void StatusPint()
         {
-            Console.WriteLine("====Player Status====");
-            Console.WriteLine("  {0}",PlayerClass.ToString());
-            Console.WriteLine("체력 : {0}", Hp);
-            Console.WriteLine("  힘 : {0}", Str);
-            Console.WriteLine("지력 : {0}", Int);
-            Console.WriteLine("민첩 : {0}", Dex);    
-            Console.WriteLine("=====================");
+            Console.WriteLine("┏━━━━━━ 스 탯 ━━━━━━┓");
+            Console.WriteLine(" 직업 : {0}",PlayerClass);
+            Console.WriteLine(" 체력 : {0}", Hp);
+            Console.WriteLine("   힘 : {0}", Str);
+            Console.WriteLine(" 지력 : {0}", Int);
+            Console.WriteLine(" 민첩 : {0}", Dex);    
+            Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━┛");
         }
 
     }
-    //TODO : 클래스 세팅 미구현
-    //public class PlayerBuider
+   
+    //public class PlayerBuilder
     //{
     //    public string PlayerClass;
     //    public int Hp;
@@ -119,7 +120,7 @@ namespace OOPConsoleProject
     //    public float Int;
     //    public int Luck;
 
-    //    public PlayerBuider()
+    //    public PlayerBuilder()
     //    {
     //        PlayerClass = "모험가";
     //        Hp = 50;
@@ -128,9 +129,6 @@ namespace OOPConsoleProject
     //        Int = 1;
     //        Luck = 1;
     //    }
-
-
-
     //    public Player Build()
     //    {
     //        Player player = new Player();
@@ -139,40 +137,41 @@ namespace OOPConsoleProject
     //        player.Str = Str;
     //        player.Dex = Dex;
     //        player.Int = Int;
-    //        player.Luck = Luck;
     //        return player;
     //    }
 
-    //    public PlayerBuider SetClass(string _class)
+    //    public PlayerBuilder SetClass(string _class)
     //    {
     //        this.PlayerClass = _class;
     //        return this;
     //    }
-    //    public PlayerBuider SetHp(int hp)
+    //    public PlayerBuilder SetHp(int hp)
     //    {
     //        this.Hp = hp;
     //        return this;
     //    }
-    //    public PlayerBuider SetStr(float str)
+    //    public PlayerBuilder SetStr(float str)
     //    {
     //        this.Str = str;
     //        return this;
     //    }
-    //    public PlayerBuider SetDex(float dex)
+    //    public PlayerBuilder SetDex(float dex)
     //    {
     //        this.Dex = dex;
     //        return this;
     //    }
-    //    public PlayerBuider SetInt(float _int)
+    //    public PlayerBuilder SetInt(float _int)
     //    {
     //        this.Int = _int;
     //        return this;
     //    }
-    //    public PlayerBuider SetLuck(int luck)
+    //    public PlayerBuilder SetLuck(int luck)
     //    {
     //        this.Luck = luck;
     //        return this;
     //    }
     //}
+
+
 }
 

@@ -51,7 +51,7 @@ namespace OOPConsoleProject
         public void ItemFindAll()
         {
             Console.SetCursorPosition(0, 2);
-            Console.WriteLine("===소유한 아이템====");
+            Console.WriteLine("┏━━━━━━ 가 방 ━━━━━━┓");
             if(items.Count == 0)
             {
                 Console.WriteLine("아이템이 없어요");
@@ -60,7 +60,7 @@ namespace OOPConsoleProject
             {
                 Console.WriteLine("{0}. {1}",i+1, items[i].itemName);
             }
-            Console.WriteLine("====================");
+            Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━┛");
                 
         }
 
@@ -212,6 +212,7 @@ namespace OOPConsoleProject
                     Utility.PressAnyKey($"{selectItem.itemName} 을/를 버렸습니다.");
                     ItemRemove(selectItem);
                     stack.Pop();
+                    
                     break;
                 case ConsoleKey.D2:
                     stack.Pop();

@@ -41,7 +41,7 @@ namespace OOPConsoleProject.Scenes
             switch(keyDown)
             {
                 case ConsoleKey.D1:
-                    GameManager.SceneChange(SceneType.Village);
+                    GameManager.SceneChange(SceneType.RoomDialog);
                     break;
                 case ConsoleKey.D2:
                     Console.Clear();

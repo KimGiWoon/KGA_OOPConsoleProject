@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace OOPConsoleProject.Scenes
 {
     public enum SceneType
-    {//타이틀,  직업선택  ,  방   ,  마을  , 상점, 필드 ,   던전 ,  보스방 ,  전투     
-        Title, ClassChoice, MyRoom, Village, Shop, Field, Dungeon, BossRoom, Battle
+    {//타이틀,  직업선택  ,  방   ,방 나레이션,  마을  , 마을 나레이션, 상점, 필드 ,   던전 ,  보스방 ,  전투     
+        Title, ClassChoice, MyRoom, RoomDialog, Village, villageDialog, Shop, Field, Dungeon, BossRoom, Battle
     }
     
     public abstract class BaseScene

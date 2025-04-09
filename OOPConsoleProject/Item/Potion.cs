@@ -25,4 +25,18 @@ namespace OOPConsoleProject.Item
             GameManager.Player.Heal(HealAmount);
         }
     }
+    public class Bead : Items
+    {
+        public Bead(Vecter2 position) : base('◐', position)
+        {
+            itemName = "신비한구슬";
+            itemDescription = "신비한 구슬입니다. 어딘가에 사용할 수 있을거 같습니다.";
+        }
+
+        public override void Use()
+        {
+           
+        }
+    }
+
 }
