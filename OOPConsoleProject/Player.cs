@@ -8,7 +8,7 @@ namespace OOPConsoleProject
 {
     public class Player
     {
-        private Inventory inventory;
+        private Inventory inventory;    // Player Inventory
         public Inventory Inventory { get { return inventory; } }
         public Vecter2 position;
         public bool[,] map;
@@ -55,7 +55,23 @@ namespace OOPConsoleProject
                 Hp = maxHp;
             }
         }
-
+        // Player Action
+        public void playerAction(ConsoleKey keyDown)
+        {
+            switch(keyDown)
+            {
+                case ConsoleKey.UpArrow:
+                case ConsoleKey.DownArrow:
+                case ConsoleKey.LeftArrow:
+                case ConsoleKey.RightArrow:
+                    Move(keyDown);
+                    break;
+                case ConsoleKey.I:
+                    Inventory.Open();
+                    break;
+            }
+        }
+        // Player Move
         public void Move(ConsoleKey keyDown)
         {
             Vecter2 MovePos = position;
@@ -80,8 +96,6 @@ namespace OOPConsoleProject
             {
                 position = MovePos;
             }
-           
-
         }
         public void StatusPint()
         {

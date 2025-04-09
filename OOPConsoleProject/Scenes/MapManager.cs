@@ -28,9 +28,7 @@ namespace OOPConsoleProject.Scenes
             // 플레이어 상태창 출력
             Console.SetCursorPosition(0, map.GetLength(0) + 1);
             GameManager.Player.StatusPint();
-            // 인벤토리창 출력
-            Console.SetCursorPosition(0, map.GetLength(0) + 9);
-            GameManager.Player.Inventory.ItemFindAll();
+            
         }
 
         public override void Input()
@@ -40,7 +38,7 @@ namespace OOPConsoleProject.Scenes
 
         public override void Update()
         {
-            GameManager.Player.Move(keyDown);
+            GameManager.Player.playerAction(keyDown);
         }
 
         public override void Result()
