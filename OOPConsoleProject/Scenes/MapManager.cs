@@ -14,8 +14,7 @@ namespace OOPConsoleProject.Scenes
         protected string[] mapData;
         // Game Object List Create
 
-        protected List<GameObject> gameObjects;
-        protected List<GameObject> monsterGameObjects;
+        protected List<GameObject> gameObjects;      
 
         public override void Render()
         {
@@ -24,6 +23,7 @@ namespace OOPConsoleProject.Scenes
             {
                 gameObj.Print();
             }
+
             GameManager.Player.Print();
             // 플레이어 상태창 출력
             Console.SetCursorPosition(0, map.GetLength(0) + 1);
@@ -56,6 +56,7 @@ namespace OOPConsoleProject.Scenes
                     break;
                 }
             }
+            
         }
 
         private void MapCreate()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OOPConsoleProject.GameObjects;
 using OOPConsoleProject.Scenes;
 
 namespace OOPConsoleProject
@@ -15,7 +16,7 @@ namespace OOPConsoleProject
 
         private static Player player;   // 플레이어 프로퍼티 생성
         public static Player Player { get { return player; } }
-       
+
         private static bool gameOver;
         
         public static void GameRun()
@@ -41,6 +42,7 @@ namespace OOPConsoleProject
             Console.CursorVisible = false;  // 커서 세팅
             gameOver = false;   // 게임 설정
             player = new Player();     //플레이어 설정
+            
 
             sceneList = new Dictionary<SceneType, BaseScene>();
             sceneList.Add(SceneType.Title, new TitleScene());

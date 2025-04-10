@@ -8,6 +8,8 @@ namespace OOPConsoleProject.Scenes
 {
     public class RoomDialog : BaseScene
     {
+        Player player;
+
         public RoomDialog()
         {
             mapName = SceneType.RoomDialog;

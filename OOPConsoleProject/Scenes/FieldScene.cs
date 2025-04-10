@@ -39,7 +39,7 @@ namespace OOPConsoleProject.Scenes
             
             // 마을로 가는 Game Object 생성
             gameObjects = new List<GameObject>();
-            monsterGameObjects = new List<GameObject>();
+            
 
             gameObjects.Add(new Location('П', ConsoleColor.Red, new Vecter2(1, 1), SceneType.Village));
             gameObjects.Add(new Location('П', ConsoleColor.Blue, new Vecter2(17, 1), SceneType.Dungeon));
@@ -50,12 +50,9 @@ namespace OOPConsoleProject.Scenes
             gameObjects.Add(new Potion(new Vecter2(15, 2), 30));
 
             // 몬스터 생성
-            gameObjects.Add(new Monster("버섯병사", 50, 2, new Vecter2(3,3),SceneType.Battle));
-            gameObjects.Add(new Monster("버섯병사", 50, 2, new Vecter2(17,2),SceneType.Battle));
-            gameObjects.Add(new Monster("버섯병사", 50, 2, new Vecter2(12,2),SceneType.Battle));
-
-           
-
+            //gameObjects.Add(new Monster("버섯병사", 50, 2, new Vecter2(4, 3), SceneType.Battle));
+            //gameObjects.Add(new Monster("버섯병사", 50, 2, new Vecter2(17, 2), SceneType.Battle));
+            //gameObjects.Add(new Monster("버섯쫄병", 40, 2, new Vecter2(12, 2), SceneType.Battle));
         }
 
         public override void Enter()

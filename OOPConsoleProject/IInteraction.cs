@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OOPConsoleProject.GameObjects;
 
 namespace OOPConsoleProject
 {
@@ -10,5 +11,5 @@ namespace OOPConsoleProject
     {
         public void Interact(Player player);
     }
-    
+
 }

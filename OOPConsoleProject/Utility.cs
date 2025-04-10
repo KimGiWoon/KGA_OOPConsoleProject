@@ -31,7 +31,7 @@ namespace OOPConsoleProject
         {
             Console.WriteLine(text);
             Console.WriteLine("계속하려면 아무키나 누르세요.");
-            Console.ReadKey();
+            Console.ReadKey(true);
         }
     }
 

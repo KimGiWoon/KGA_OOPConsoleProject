@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OOPConsoleProject.GameObjects;
 
 namespace OOPConsoleProject
 {
@@ -13,7 +14,8 @@ namespace OOPConsoleProject
         public Inventory Inventory { get { return inventory; } }
         public Vecter2 position;
         public bool[,] map;
-
+        Random random = new Random();
+        
         // 플레이어 스탯 프로퍼티 생성
         private string playerClass; // Player Class
         public string PlayerClass { get { return playerClass; } set { playerClass = value; } }
@@ -21,23 +23,34 @@ namespace OOPConsoleProject
         public int MaxHp { get { return maxHp; } }
         private int hp;     // Player HP
         public int Hp { get { return hp; } set { hp = value; } }
-        private float str;  // Player Strhgth
-        public float Str { get { return str; } set { str = value; } }
-        private float dex;  // Player Dex     
-        public float Dex { get { return dex; } set { dex = value; } }
-        private float _int; // Player Int
-        public float Int { get { return _int; } set { _int = value; } }
+        private int damage;  // Player Damage
+        public int Damage { get { return damage; } set { damage = value; } }
+        private int defence;  // Player Defence     
+        public int Defence { get { return defence; } set { defence = value; } }
+        private int evasion; // Player Evasion
+        public int Evasion { get { return evasion; } set { evasion = value; } }
+        private int luck;   // Player Luck
+        public int Luck { get { return luck; } set { luck = value; } }
+
+        private string monsterName;
+        public string MonsterName { get { return monsterName; } set { monsterName = value; } }
 
         public Player()
         {
             inventory = new Inventory();
+            Luck = random.Next(1, 11);
 
             PlayerClass = "모험가";
             Hp = 100;
             maxHp = hp;
-            Str = 2;
-            Dex = 2;
-            Int = 1;
+            Damage = 10;
+            Defence = 5;
+            Evasion = 5;
+        }
+
+        public void InterractMonster(Monster monster)
+        {
+            MonsterName = monster.Name;
         }
 
         public void Print()
@@ -103,12 +116,40 @@ namespace OOPConsoleProject
             Console.WriteLine("┏━━━━━━ 스 탯 ━━━━━━┓");
             Console.WriteLine(" 직업 : {0}",PlayerClass);
             Console.WriteLine(" 체력 : {0}", Hp);
-            Console.WriteLine("   힘 : {0}", Str);
-            Console.WriteLine(" 지력 : {0}", Int);
-            Console.WriteLine(" 민첩 : {0}", Dex);    
+            Console.WriteLine(" 데미지 : {0}", Damage);
+            Console.WriteLine(" 방어력 : {0}", Defence);
+            Console.WriteLine(" 회피력 : {0}", Evasion);    
             Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━┛");
         }
 
+        public void MonsterAttack(Monster monster)
+        {
+            Console.WriteLine("몬스터를 공격합니다.");
+            Console.WriteLine("플레이어 : 이야아압~!");
+            monster.MonsterTakeDamage(Damage);
+        }
+
+        public void PlayerTakeDamage(int damage)
+        {
+            if(Evasion < Luck)
+            {
+                Console.WriteLine("플레이어가 공격을 회피했습니다.");
+            }
+            else
+            {
+                Console.WriteLine("플레이어가 맞았습니다.");
+                int totalDamage = Defence > damage ? 0 : damage - Defence;
+                Hp -= totalDamage;
+                Console.WriteLine("으아아악!! {0}의 데미지를 받았습니다 ( 남은 HP : {1}",totalDamage, Hp);
+            }
+            
+        }
+
+        public bool IsAlive()
+        {
+            return Hp > 0;
+        }
+        
     }
    
     //public class PlayerBuilder

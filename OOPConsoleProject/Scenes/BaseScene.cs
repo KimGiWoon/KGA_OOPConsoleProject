@@ -8,7 +8,7 @@ namespace OOPConsoleProject.Scenes
 {
     public enum SceneType
     {//타이틀,  직업선택  ,  방   ,방 나레이션,  마을  , 마을 나레이션, 상점, 필드 ,   던전 ,  전투     
-        Title, ClassChoice, MyRoom, RoomDialog, Village, villageDialog, Shop, Field, Dungeon,  Battle
+        Title, ClassChoice, MyRoom, RoomDialog, Village, villageDialog, Shop, Field, Dungeon, Battle
     }
     
     public abstract class BaseScene
@@ -23,8 +23,7 @@ namespace OOPConsoleProject.Scenes
 
         public virtual void Enter() { } // Enter Interaction
         public virtual void Exit() { }  // Exit Interaction
-        //public virtual void Open() { }  // Open Interaction
-        //public virtual void Close() { } // Close Interaction
+        
 
 
     }
