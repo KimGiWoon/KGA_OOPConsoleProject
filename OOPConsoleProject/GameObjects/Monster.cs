@@ -14,34 +14,18 @@ namespace OOPConsoleProject.GameObjects
         private string name;
         public string Name { get { return name; } set { name = value; } }
         private int hp;
-        public int HP { get { return hp; } set { hp = value; } }
+        public int Hp { get { return hp; } set { hp = value; } }
         private int damage;
         public int Damage { get { return damage; } set { damage = value; } }
 
        
-        public Monster(string name, int hp, int damage, Vecter2 position, SceneType scene) : base(ConsoleColor.DarkRed,'◎', position, true)
+        public Monster(string name, int hp, int damage, Vecter2 position, SceneType scene, bool disposable) : base(ConsoleColor.DarkRed,'◎', position, disposable)
         {
             this.Name = name;
-            this.HP = hp;
+            this.Hp = hp;
             this.Damage = damage;
             this.scene = scene;
-
-            //MonsterFactory stage_1_Monster = new MonsterFactory();
-            //MonsterFactory stage_2_Monster = new MonsterFactory();
-            //MonsterFactory boss_Monster = new MonsterFactory();
-            //stage_1_Monster.stageLevel = 1;
-            //stage_2_Monster.stageLevel = 2;
-
-            //// 필드 몬스터 생성
-            //Monster monster1 = stage_1_Monster.Create("버섯병사");
-            //Monster monster2 = stage_1_Monster.Create("버섯쫄병");
-            //Monster monster3 = stage_1_Monster.Create("버섯기사");
-
-            //// 던전 몬스터, 보스 몬스터 생성
-            //Monster monster4 = stage_2_Monster.Create("버섯기사");
-            //Monster monster5 = stage_2_Monster.Create("버섯장군");
-            //Monster bossMonster = boss_Monster.Create("버섯킹");
-
+            disposable = false;
         }
 
         public override void Interact(Player player)
@@ -59,39 +43,18 @@ namespace OOPConsoleProject.GameObjects
         public void MonsterTakeDamage(int damage)
         {
             Console.WriteLine("몬스터가 맞았습니다.");
-            HP -= damage;
-            Console.WriteLine("커허헉.... {0}의 데미지를 받았습니다 ( 남은 HP : {1}",damage, HP);
+            Hp -= damage;
+            if (Hp < 0)
+            {
+                Hp = 0;
+            }
+            Console.WriteLine("커허헉.... {0}의 데미지를 받았습니다 ( 몬스터의 남은 HP : {1}",damage, Hp);
 
         }
 
         public bool IsAlive()
         {
-            return HP > 0;
+            return Hp > 0;
         }
     }
-   
-        
-    
-    //public class MonsterFactory
-    //{
-    //    public int stageLevel;
-    //    public float rate;
-
-    //    public Monster Create(string name)
-    //    {
-    //        Monster monster;
-
-    //        switch (name)
-    //        {
-    //            case "버섯병사": monster = new Monster("버섯병사", 50, 2 + stageLevel, new Vecter2(0, 0), SceneType.Battle); break;
-    //            case "버섯쫄병": monster = new Monster("버섯쫄병", 40, 2 + stageLevel, new Vecter2(0, 0), SceneType.Battle); break;
-    //            case "버섯기사": monster = new Monster("버섯기사", 70, 3 + stageLevel, new Vecter2(0, 0), SceneType.Battle); break;
-    //            case "버섯장군": monster = new Monster("버섯장군", 100, 4 + stageLevel, new Vecter2(0, 0), SceneType.Battle); break;
-    //            case "버섯킹": monster = new Monster("버섯킹", 200, 5 + stageLevel, new Vecter2(0, 0), SceneType.Battle); break;
-    //            default: return null;
-    //        }
-    //        return monster;
-
-    //    }
-    //}
 }

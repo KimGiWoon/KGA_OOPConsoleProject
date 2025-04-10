@@ -42,8 +42,8 @@ namespace OOPConsoleProject
 
             PlayerClass = "모험가";
             Hp = 100;
-            maxHp = hp;
-            Damage = 10;
+            maxHp = Hp;
+            Damage = 30;
             Defence = 5;
             Evasion = 5;
         }
@@ -131,18 +131,14 @@ namespace OOPConsoleProject
 
         public void PlayerTakeDamage(int damage)
         {
-            if(Evasion < Luck)
+            Console.WriteLine("플레이어가 맞았습니다.");
+            int totalDamage = Defence > damage ? 0 : damage - Defence;
+            Hp -= totalDamage;
+            if(Hp < 0)
             {
-                Console.WriteLine("플레이어가 공격을 회피했습니다.");
+                Hp = 0;
             }
-            else
-            {
-                Console.WriteLine("플레이어가 맞았습니다.");
-                int totalDamage = Defence > damage ? 0 : damage - Defence;
-                Hp -= totalDamage;
-                Console.WriteLine("으아아악!! {0}의 데미지를 받았습니다 ( 남은 HP : {1}",totalDamage, Hp);
-            }
-            
+            Console.WriteLine("으아아악!! {0}의 데미지를 받았습니다 (플레이어의 남은 HP : {1}",totalDamage, Hp);
         }
 
         public bool IsAlive()
@@ -151,68 +147,6 @@ namespace OOPConsoleProject
         }
         
     }
-   
-    //public class PlayerBuilder
-    //{
-    //    public string PlayerClass;
-    //    public int Hp;
-    //    public float Str;
-    //    public float Dex;
-    //    public float Int;
-    //    public int Luck;
-
-    //    public PlayerBuilder()
-    //    {
-    //        PlayerClass = "모험가";
-    //        Hp = 50;
-    //        Str = 1;
-    //        Dex = 1;
-    //        Int = 1;
-    //        Luck = 1;
-    //    }
-    //    public Player Build()
-    //    {
-    //        Player player = new Player();
-    //        player.PlayerClass = PlayerClass;
-    //        player.Hp = Hp;
-    //        player.Str = Str;
-    //        player.Dex = Dex;
-    //        player.Int = Int;
-    //        return player;
-    //    }
-
-    //    public PlayerBuilder SetClass(string _class)
-    //    {
-    //        this.PlayerClass = _class;
-    //        return this;
-    //    }
-    //    public PlayerBuilder SetHp(int hp)
-    //    {
-    //        this.Hp = hp;
-    //        return this;
-    //    }
-    //    public PlayerBuilder SetStr(float str)
-    //    {
-    //        this.Str = str;
-    //        return this;
-    //    }
-    //    public PlayerBuilder SetDex(float dex)
-    //    {
-    //        this.Dex = dex;
-    //        return this;
-    //    }
-    //    public PlayerBuilder SetInt(float _int)
-    //    {
-    //        this.Int = _int;
-    //        return this;
-    //    }
-    //    public PlayerBuilder SetLuck(int luck)
-    //    {
-    //        this.Luck = luck;
-    //        return this;
-    //    }
-    //}
-
 
 }
 

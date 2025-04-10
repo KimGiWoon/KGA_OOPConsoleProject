@@ -12,19 +12,19 @@ namespace OOPConsoleProject.Scenes
 {
     public enum Choice
     {
-        Menu, fight, Run, hit
+        Menu, fight, Run, hit, Win, Die
     }
     public class BattleScene : BaseScene
     {
         Monster monster;
         Player player;
         Queue<Choice> monsterQueue;
-        bool win = false;
+        bool battleEnd = false;
 
         public BattleScene()
         {
             player = new Player();
-            //monster = new Monster("");
+            monster = new Monster("버섯킹", 200, 20, new Vecter2(12, 2), SceneType.Battle, false);
             mapName = SceneType.Battle;
             monsterQueue = new Queue<Choice>();
         }
@@ -44,39 +44,77 @@ namespace OOPConsoleProject.Scenes
 
         public override void Update()
         {
+            
+        }
+        public override void Result()
+        {
+            monsterQueue.Enqueue(Choice.Menu);
             switch (keyDown)
             {
                 case ConsoleKey.D1:
-                    monsterQueue.Enqueue(Choice.Menu);
-                    while (win == false)
+                    while (monsterQueue.Count > 0)
                     {
-                        Console.Clear();
-                        switch (monsterQueue.Peek())
+                        while (battleEnd == false)
                         {
-                            case Choice.Menu:
-                                Menu();
-                                break;
-                            case Choice.fight:
-                                fight();
-                                break;
-                            case Choice.Run:
-                                Run();
-                                break;
-                            case Choice.hit:
-                                hit();
-                                break;
-                            default:
-                                Console.WriteLine("선택 범위를 벗어났습니다. 다시 입력해주세요");
-                                return;
+                            Console.Clear();
+                            switch (monsterQueue.Peek())
+                            {
+                                case Choice.Menu:
+                                    Menu();
+                                    break;
+                                case Choice.fight:
+                                    fight();
+                                    break;
+                                case Choice.Run:
+                                    Run();
+                                    break;
+                                case Choice.hit:
+                                    hit();
+                                    break;
+                                case Choice.Win:
+                                    Win();
+                                    battleEnd = true;
+                                    break;
+                                case Choice.Die:
+                                    Die();
+                                    battleEnd = true;
+                                    break;
+                                default:
+                                    Console.WriteLine("선택 범위를 벗어났습니다. 다시 입력해주세요");
+                                    return;
 
+                            }
                         }
+                    }
+                    if (!(player.IsAlive()))
+                    {
+                        GameManager.SceneChange(SceneType.GameOver);
+                    }
+                    else if (GameManager.beforeScene == SceneType.Field)
+                    {
+                        GameManager.SceneChange(SceneType.Field);
+                    }
+                    else
+                    {
+                        GameManager.SceneChange(SceneType.Dungeon);
                     }
                     break;
 
+                case ConsoleKey.D2:
+                    Utility.PressAnyKey("플레이어가 도망쳤습니다.");
+                    if(GameManager.beforeScene == SceneType.Field)
+                    {
+                        GameManager.SceneChange(SceneType.Field);
+                        break;
+                    }
+                    else 
+                    {
+                        GameManager.SceneChange(SceneType.Dungeon);
+                        break;
+                    }
+                    
             }
         }
-            
-
         public void Menu()
         {
             Console.Clear();
@@ -101,33 +139,49 @@ namespace OOPConsoleProject.Scenes
 
         public void fight()
         {
-            Console.WriteLine("몬스터를 공격합니다.");
-            Console.WriteLine("플레이어 : 이야아압~!");
-            monster.MonsterTakeDamage(player.Damage);
+            player.MonsterAttack(monster);
+            Console.WriteLine();
             Console.WriteLine("1. 다음");
-            
+
             keyDown = Console.ReadKey(true).Key;
+
             switch (keyDown)
             {
                 case ConsoleKey.D1:
-                    monsterQueue.Dequeue();
-                    monsterQueue.Enqueue(Choice.hit);
+                    if (monster.IsAlive())
+                    {
+                        monsterQueue.Dequeue();
+                        monsterQueue.Enqueue(Choice.hit);
+                    }
+                    else
+                    {
+                        monsterQueue.Dequeue();
+                        monsterQueue.Enqueue(Choice.Win);
+                    }
                     break;
             }
-            
+
         }
         public void hit()
         {
-            Console.WriteLine("몬스터가 플레이어를 공격합니다.");
-            Console.WriteLine("몬스터 : 쿠악!");
+            monster.PlayerAttack(player);
+            Console.WriteLine();
             Console.WriteLine("1. 다음");
 
             keyDown = Console.ReadKey(true).Key;
             switch (keyDown)
             {
                 case ConsoleKey.D1:
-                    monsterQueue.Dequeue();
-                    monsterQueue.Enqueue(Choice.Menu);
+                    if (player.IsAlive())
+                    {
+                        monsterQueue.Dequeue();
+                        monsterQueue.Enqueue(Choice.Menu);
+                    }
+                    else
+                    {
+                        monsterQueue.Dequeue();
+                        monsterQueue.Enqueue(Choice.Die);
+                    }
                     break;
             }
         }
@@ -135,6 +189,7 @@ namespace OOPConsoleProject.Scenes
         public void Run()
         {
             Utility.PressAnyKey("플레이어가 도망쳤습니다.");
+            monsterQueue.Dequeue();
             if (GameManager.beforeScene == SceneType.Field)
             {
                 GameManager.SceneChange(SceneType.Field);
@@ -143,29 +198,20 @@ namespace OOPConsoleProject.Scenes
             {
                 GameManager.SceneChange(SceneType.Dungeon);
             }
+
+        }
+
+        public void Win()
+        {
+
+            Utility.PressAnyKey("축하합니다~! 몬스터가 죽었습니다.");
             monsterQueue.Dequeue();
         }
 
-        public override void Result()
+        public void Die()
         {
-            switch(keyDown)
-            {
-                
-
-                case ConsoleKey.D2:
-                    Utility.PressAnyKey("플레이어가 도망쳤습니다.");
-                    if(GameManager.beforeScene == SceneType.Field)
-                    {
-                        GameManager.SceneChange(SceneType.Field);
-                        break;
-                    }
-                    else 
-                    {
-                        GameManager.SceneChange(SceneType.Dungeon);
-                        break;
-                    }
-                    
-            }
+            Utility.PressAnyKey("플레이어가 죽었습니다.");
+            monsterQueue.Dequeue();
         }
 
     }

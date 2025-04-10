@@ -40,7 +40,7 @@ namespace OOPConsoleProject.Scenes
             gameObjects.Add(new Location('П', ConsoleColor.Blue, new Vecter2(1, 1), SceneType.Field));
 
             // 몬스터 생성
-            gameObjects.Add(new Monster("버섯킹", 40, 2, new Vecter2(12, 2), SceneType.Battle));
+            gameObjects.Add(new Monster("버섯킹", 40, 2, new Vecter2(12, 2), SceneType.Battle, false));
         }
 
         public override void Enter()
