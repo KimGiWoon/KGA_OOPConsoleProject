@@ -37,6 +37,7 @@ namespace OOPConsoleProject.GameObjects
         {
             Console.WriteLine("플레이어를 공격합니다.");
             Console.WriteLine("몬스터 : 쿠악!");
+            Console.WriteLine("----------------------");
             player.PlayerTakeDamage(Damage);
         }
 
@@ -48,7 +49,7 @@ namespace OOPConsoleProject.GameObjects
             {
                 Hp = 0;
             }
-            Console.WriteLine("커허헉.... {0}의 데미지를 받았습니다 ( 몬스터의 남은 HP : {1}",damage, Hp);
+            Console.WriteLine("커허헉.... 몬스터가 {0}의 데미지를 받았습니다 (몬스터의 남은 HP : {1})",damage, Hp);
 
         }
 

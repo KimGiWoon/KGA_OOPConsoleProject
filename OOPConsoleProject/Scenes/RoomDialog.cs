@@ -21,6 +21,7 @@ namespace OOPConsoleProject.Scenes
             Console.WriteLine();
             Utility.SlowTextPrint("플레이어 : 아~~~~ 상쾌한 아침이다.");
             Utility.SlowTextPrint("플레이어 : 조금만 더 자고 싶은데 일어나야겠지?");
+            Console.WriteLine();
             Utility.SlowTextPrint("1. 일어난다");
             Utility.SlowTextPrint("2. 좀 더 잘래...");
         }

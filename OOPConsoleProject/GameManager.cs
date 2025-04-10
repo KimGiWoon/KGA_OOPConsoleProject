@@ -55,6 +55,7 @@ namespace OOPConsoleProject
             sceneList.Add(SceneType.villageDialog, new VillageDialog());
             sceneList.Add(SceneType.Battle, new BattleScene());
             sceneList.Add(SceneType.GameOver, new GameOverScene());
+            sceneList.Add(SceneType.GameClear, new GameClearScene());
 
             curScene = sceneList[SceneType.Title];
             

@@ -90,14 +90,19 @@ namespace OOPConsoleProject.Scenes
                     {
                         GameManager.SceneChange(SceneType.GameOver);
                     }
-                    else if (GameManager.beforeScene == SceneType.Field)
+                    else if (player.IsAlive())
                     {
-                        GameManager.SceneChange(SceneType.Field);
+                        if(monster.Hp > 0)
+                        {
+                            GameManager.SceneChange(SceneType.GameOver);
+                        }
+                        else
+                        {
+                            GameManager.SceneChange(SceneType.GameClear);
+                        }
+                        
                     }
-                    else
-                    {
-                        GameManager.SceneChange(SceneType.Dungeon);
-                    }
+                    
                     break;
 
                 case ConsoleKey.D2:
@@ -132,7 +137,7 @@ namespace OOPConsoleProject.Scenes
                     break;
                 case ConsoleKey.D2:
                     monsterQueue.Dequeue();
-                    monsterQueue.Enqueue(Choice.Run);
+                    monsterQueue.Enqueue(Choice.Die);
                     break;
             }
         }
@@ -152,11 +157,13 @@ namespace OOPConsoleProject.Scenes
                     {
                         monsterQueue.Dequeue();
                         monsterQueue.Enqueue(Choice.hit);
+                        Console.WriteLine();
                     }
                     else
                     {
                         monsterQueue.Dequeue();
                         monsterQueue.Enqueue(Choice.Win);
+                        Console.WriteLine();
                     }
                     break;
             }
@@ -176,11 +183,13 @@ namespace OOPConsoleProject.Scenes
                     {
                         monsterQueue.Dequeue();
                         monsterQueue.Enqueue(Choice.Menu);
+                        Console.WriteLine();
                     }
                     else
                     {
                         monsterQueue.Dequeue();
                         monsterQueue.Enqueue(Choice.Die);
+                        Console.WriteLine();
                     }
                     break;
             }
@@ -190,15 +199,6 @@ namespace OOPConsoleProject.Scenes
         {
             Utility.PressAnyKey("플레이어가 도망쳤습니다.");
             monsterQueue.Dequeue();
-            if (GameManager.beforeScene == SceneType.Field)
-            {
-                GameManager.SceneChange(SceneType.Field);
-            }
-            else
-            {
-                GameManager.SceneChange(SceneType.Dungeon);
-            }
-
         }
 
         public void Win()
@@ -210,7 +210,7 @@ namespace OOPConsoleProject.Scenes
 
         public void Die()
         {
-            Utility.PressAnyKey("플레이어가 죽었습니다.");
+            Utility.PressAnyKey("플레이어가 잡아먹혔습니다.");
             monsterQueue.Dequeue();
         }
 

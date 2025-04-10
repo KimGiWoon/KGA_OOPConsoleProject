@@ -8,21 +8,42 @@ namespace OOPConsoleProject.Scenes
 {
     public class GameClearScene : BaseScene
     {
+        public GameClearScene()
+        {
+            mapName = SceneType.GameClear;
+        }
         public override void Render()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+            Console.WriteLine("┃                               ┃");
+            Console.WriteLine("┃     <  Game Over Clear!  >    ┃");
+            Console.WriteLine("┃        축하합니다~!!          ┃");
+            Console.WriteLine("┃                               ┃");
+            Console.WriteLine("┃      1. 다시 시작             ┃");
+            Console.WriteLine("┃      2. 게임 종료             ┃");
+            Console.WriteLine("┃                               ┃");
+            Console.WriteLine("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
         }
+            
         public override void Input()
         {
-            throw new NotImplementedException();
+            keyDown = Console.ReadKey(true).Key;
         }
         public override void Update()
         {
-            throw new NotImplementedException();
+            
         }
         public override void Result()
         {
-            throw new NotImplementedException();
+            switch (keyDown)
+            {
+                case ConsoleKey.D1:
+                    GameManager.GameStart();
+                    break;
+                case ConsoleKey.D2:
+                    GameManager.GameEnd();
+                    break;
+            }
         }
 
         

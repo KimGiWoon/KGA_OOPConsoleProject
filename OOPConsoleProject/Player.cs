@@ -126,6 +126,7 @@ namespace OOPConsoleProject
         {
             Console.WriteLine("몬스터를 공격합니다.");
             Console.WriteLine("플레이어 : 이야아압~!");
+            Console.WriteLine("---------------------");
             monster.MonsterTakeDamage(Damage);
         }
 
@@ -138,7 +139,7 @@ namespace OOPConsoleProject
             {
                 Hp = 0;
             }
-            Console.WriteLine("으아아악!! {0}의 데미지를 받았습니다 (플레이어의 남은 HP : {1}",totalDamage, Hp);
+            Console.WriteLine("으아아악!! 플레이어가 {0}의 데미지를 받았습니다 (플레이어의 남은 HP : {1})",totalDamage, Hp);
         }
 
         public bool IsAlive()
